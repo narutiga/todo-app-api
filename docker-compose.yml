@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      target: dev
+    image: narutiga/todo-dev:latest
+    container_name: todo-dev
+    ports:
+      - 8080:8080
+    init: true
+    volumes:
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+    command: yarn dev
+
+  test:
+    build:
+      context: .
+      target: test
+    image: narutiga/todo-test:latest
+    container_name: todo-test
+    ports:
+      - 8090:8090
+    init: true
