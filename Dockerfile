@@ -1,5 +1,5 @@
 # dev
-FROM node:18-slim as dev
+FROM node:18-bullseye as dev
 ENV NODE_ENV=development
 
 WORKDIR /app
@@ -16,5 +16,7 @@ RUN yarn
 FROM dev as test
 ENV NODE_ENV=test
 
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile \
+  && yarn cache clean
+
 
