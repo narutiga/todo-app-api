@@ -4,8 +4,33 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Message {
+  id    String     @id
+  guestName  String
+  title  String
+  createdAt DateTime @default(now())
+}
+
+model User {
+  id         String  @id
+  name       String
+  icon_image String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model Todo {
+  id          String  @id
+  title       String
+  is_done     Boolean @default(false)
+  is_priority Boolean @default(true)
+  user_id     String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
 }
