@@ -13,7 +13,9 @@ services:
     volumes:
       - ./src:/app/src
       - ./prisma:/app/prisma
-    command: yarn dev
+    env_file:
+      - .env.development.local
+    command: sh -c "yarn prisma generate && yarn dev"
 
   test:
     build:
