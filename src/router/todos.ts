@@ -1,9 +1,7 @@
 import express, { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/db";
 
 const router = express.Router();
-
-const prisma = new PrismaClient();
 
 router
   .route("/")
