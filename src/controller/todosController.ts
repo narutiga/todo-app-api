@@ -1,21 +1,21 @@
 import { Request, Response } from "express";
 import prisma from "../lib/db";
-
+import { v4 as uuidv4 } from "uuid";
 export const getTodos = async (req: Request, res: Response) => {
   const todos = await prisma.todo.findMany();
   return res.json(todos);
 };
 
 export const createTodo = async (req: Request, res: Response) => {
-  const { title } = req.body;
+  const title = req.body.title;
   const todo = await prisma.todo.create({
     data: {
-      id: "123",
-      title: "test",
+      id: uuidv4(),
+      title,
       user_id: "123",
     },
   });
-  res.json(todo);
+  return res.json(todo);
 };
 
 export const getTodo = async (req: Request, res: Response) => {
@@ -37,6 +37,7 @@ export const updateTodo = async (req: Request, res: Response) => {
     },
     data: {
       title,
+      updated_at: new Date(),
     },
   });
   return res.json(todo);
@@ -44,10 +45,12 @@ export const updateTodo = async (req: Request, res: Response) => {
 
 export const deleteTodo = async (req: Request, res: Response) => {
   const id = req.params.id;
-  const todo = await prisma.todo.delete({
+
+  await prisma.todo.delete({
     where: {
       id,
     },
   });
+
   return res.json({ message: "Todo deleted" });
 };
