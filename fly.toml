@@ -1,4 +1,4 @@
-# fly.toml file generated for kino-todo on 2023-02-23T21:20:14+09:00
+# fly.toml file generated for kino-todo on 2023-02-24T19:57:37+09:00
 
 app = "kino-todo"
 kill_signal = "SIGINT"
