@@ -19,6 +19,8 @@ RUN yarn
 FROM dev as test
 ENV NODE_ENV=test
 
+COPY --chown=node jest.config.ts tsconfig.json ./
+
 RUN yarn install --frozen-lockfile \
   && yarn cache clean
 

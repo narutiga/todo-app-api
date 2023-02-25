@@ -14,7 +14,7 @@ services:
       - ./src:/app/src
       - ./prisma:/app/prisma
     env_file:
-      - .env.development.local
+      - .env.local
     command: sh -c "yarn prisma generate && yarn dev"
 
   test:
@@ -26,3 +26,13 @@ services:
     ports:
       - 8090:8090
     init: true
+    volumes:
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+      - node_modules:/app/node_modules
+    env_file:
+      - .env.local
+    command: sh -c "yarn prisma generate && yarn dev"
+
+volumes:
+  node_modules:
