@@ -1,6 +1,6 @@
-import { prismaMock } from "../lib/singleton";
+import { prismaMock } from "../../lib/singleton";
 import request from "supertest";
-import app from "../app";
+import app from "../../app";
 
 describe("Todos API", () => {
   beforeEach(() => {

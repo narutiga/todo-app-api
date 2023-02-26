@@ -6,7 +6,7 @@ import {
   getTodo,
   getTodos,
   updateTodo,
-} from "../controller/todosController";
+} from "../controller/v1/todosController";
 
 const router = express.Router();
 
