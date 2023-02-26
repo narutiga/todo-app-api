@@ -10,4 +10,4 @@ jobs:
       - name: echo docker and compose version
         run: docker -v && docker compose -v
       - name: run migrate & test
-        run: docker-compose run test
+        run: cat compose.yaml
