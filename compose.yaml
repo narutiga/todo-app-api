@@ -30,7 +30,7 @@ services:
       - ./src:/app/src
       - ./prisma:/app/prisma
       - node_modules:/app/node_modules
-    command: sh -c "yarn prisma generate && yarn dev"
+    command: sh -c "yarn prisma generate && yarn test"
 
 volumes:
   node_modules:
