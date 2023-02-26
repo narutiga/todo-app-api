@@ -3,11 +3,11 @@ name: Unit Test
 on: [push]
 
 jobs:
-  test:
-    run-on: ubuntu-latest
+  migrate-and-test:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: echo docker and compose version
         run: docker -v && docker compose -v
       - name: run migrate & test
-        run: docker compose run test
+        run: docker-compose run test
