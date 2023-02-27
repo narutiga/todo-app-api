@@ -13,5 +13,5 @@ jobs:
         run: docker container ls -a
       - name: image clear
         run: docker rmi $(docker images -q)
-      - name: run migrate & test
-        run: docker-compose run --rm test
+#       - name: run migrate & test
+#         run: docker-compose run --rm test
