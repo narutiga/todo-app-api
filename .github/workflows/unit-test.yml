@@ -9,9 +9,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: echo docker and compose version
         run: docker -v && docker compose -v
-      - name: container clear
-        run: docker rm $(docker ps -a -q)
       - name: image clear
         run: docker rmi $(docker images -q)
       - name: run migrate & test
-        run: docker-compose run test
+        run: docker-compose run --rm test
