@@ -19,6 +19,7 @@ RUN yarn
 FROM dev as test
 ENV NODE_ENV=test
 
+COPY --from=dev --chown=node /app/node_modules ./node_modules
 COPY --chown=node jest.config.ts tsconfig.json ./
 
 # build
