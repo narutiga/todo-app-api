@@ -11,3 +11,5 @@ jobs:
         run: yarn
       - name: prisma generate
         run: yarn prisma generate
+      - name: unit test
+        run: yarn test
