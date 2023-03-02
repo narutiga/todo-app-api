@@ -7,9 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: yarn install
-        run: yarn
-      - name: prisma generate
-        run: yarn prisma generate
       - name: unit test
-        run: yarn test
+        run: docker compose run test
