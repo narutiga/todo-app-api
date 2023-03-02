@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import prisma from "../lib/db";
+import prisma from "../lib/prisma/client";
 
 export const checkTodoExists = async (
   req: Request,

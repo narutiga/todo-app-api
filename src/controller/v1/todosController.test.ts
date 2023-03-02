@@ -1,47 +1,8 @@
-import { prismaMock } from "../../lib/singleton";
+import { prismaMock } from "../../lib/prisma/singleton";
 import request from "supertest";
 import app from "../../app";
 
 describe("Todos API", () => {
-  beforeEach(() => {
-    const dummyTodos = [
-      {
-        id: "53456b71-b111-4278-ac34-9243620e2ac5",
-        title: "ナルガとティガを抱っこする",
-        is_done: false,
-        is_priority: true,
-        user_id: "123",
-        created_at: new Date(),
-        updated_at: new Date(),
-      },
-      {
-        id: "53456b71-b111-4278-ac34-9243620e2ac6",
-        title: "ナルガにごはんをあげる",
-        is_done: false,
-        is_priority: true,
-        user_id: "123",
-        created_at: new Date(),
-        updated_at: new Date(),
-      },
-    ];
-
-    const dummyTodo = {
-      id: "53456b71-b111-4278-ac34-9243620e2ac7",
-      title: "ナルガとティガをなでる",
-      is_done: false,
-      is_priority: true,
-      user_id: "123",
-      created_at: new Date(),
-      updated_at: new Date(),
-    };
-
-    prismaMock.todo.findMany.mockResolvedValue(dummyTodos);
-    prismaMock.todo.create.mockResolvedValue(dummyTodo);
-    prismaMock.todo.findUnique.mockResolvedValue(dummyTodos[1]);
-    prismaMock.todo.update.mockResolvedValue(dummyTodo);
-    prismaMock.todo.delete.mockResolvedValue(dummyTodo);
-  });
-
   test("should return a list of todos", async () => {
     const response = await request(app).get("/api/v1/todos");
 
