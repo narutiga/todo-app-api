@@ -16,11 +16,10 @@ ENV NODE_ENV=development
 RUN yarn
 
 # test
-FROM base as test
+FROM dev as test
 ENV NODE_ENV=test
 
-RUN yarn
-
+COPY --from=dev --chown=node /app/node_modules ./node_modules
 COPY --chown=node jest.config.ts tsconfig.json ./
 
 # build
