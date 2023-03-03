@@ -10,3 +10,4 @@ jobs:
       - name: yarn install
         run: yarn
       - name: unit test
+        run: yarn test
