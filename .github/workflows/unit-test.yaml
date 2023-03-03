@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: show directories and files
+        run: ls
       - name: yarn install
         run: yarn
       - name: unit test
