@@ -7,9 +7,10 @@ const validateTodoData = (req: Request, res: Response, next: NextFunction) => {
     is_done: false,
     is_priority: true,
   };
+
   const result = todoSchema.safeParse(todoData);
   if (!result.success) {
-    throw new Error(result.error.message);
+    return res.status(400).json({ message: "Invalid todo data" });
   }
   next();
 };
