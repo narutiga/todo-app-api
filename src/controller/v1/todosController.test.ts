@@ -78,7 +78,7 @@ describe("Todos API", () => {
     test("should create a new todo", async () => {
       const response = await request(app)
         .post("/api/v1/todos")
-        .send({ title: "ナルガとティガをなでる" });
+        .send({ priority: "high", title: "ナルガとティガをなでる" });
 
       expect(response.status).toBe(200);
       expect(response.body[2].title).toBe("ナルガとティガをなでる");
