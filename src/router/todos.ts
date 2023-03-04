@@ -14,6 +14,10 @@ const router = express.Router();
 router.route("/").get(getTodos).post(validateTodoData, createTodo);
 
 router.use("/:id", checkTodoExists);
-router.route("/:id").get(getTodo).put(updateTodo).delete(deleteTodo);
+router
+  .route("/:id")
+  .get(getTodo)
+  .put(validateTodoData, updateTodo)
+  .delete(deleteTodo);
 
 module.exports = router;

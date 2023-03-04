@@ -29,7 +29,7 @@ model Todo {
   id          String  @id
   title       String
   is_done     Boolean @default(false)
-  is_priority Boolean @default(true)
+  priority    String
   user_id     String
   created_at  DateTime @default(now())
   updated_at  DateTime @default(now())

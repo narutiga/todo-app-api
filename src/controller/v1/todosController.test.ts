@@ -10,7 +10,7 @@ describe("Todos API", () => {
           id: "53456b71-b111-4278-ac34-9243620e2ac5",
           title: "ナルガとティガを抱っこする",
           is_done: false,
-          is_priority: true,
+          priority: "high",
           user_id: "123",
           created_at: new Date(),
           updated_at: new Date(),
@@ -19,7 +19,7 @@ describe("Todos API", () => {
           id: "53456b71-b111-4278-ac34-9243620e2ac6",
           title: "ナルガにごはんをあげる",
           is_done: false,
-          is_priority: true,
+          priority: "high",
           user_id: "123",
           created_at: new Date(),
           updated_at: new Date(),
@@ -44,7 +44,7 @@ describe("Todos API", () => {
         id: "53456b71-b111-4278-ac34-9243620e2ac7",
         title: "ナルガとティガをなでる",
         is_done: false,
-        is_priority: true,
+        priority: "high",
         user_id: "123",
         created_at: new Date(),
         updated_at: new Date(),
@@ -54,7 +54,7 @@ describe("Todos API", () => {
           id: "53456b71-b111-4278-ac34-9243620e2ac5",
           title: "ナルガとティガを抱っこする",
           is_done: false,
-          is_priority: true,
+          priority: "high",
           user_id: "123",
           created_at: new Date(),
           updated_at: new Date(),
@@ -63,7 +63,7 @@ describe("Todos API", () => {
           id: "53456b71-b111-4278-ac34-9243620e2ac6",
           title: "ナルガにごはんをあげる",
           is_done: false,
-          is_priority: true,
+          priority: "high",
           user_id: "123",
           created_at: new Date(),
           updated_at: new Date(),
@@ -99,7 +99,7 @@ describe("Todo API", () => {
         id: "53456b71-b111-4278-ac34-9243620e2ac5",
         title: "ナルガとティガを抱っこする",
         is_done: false,
-        is_priority: true,
+        priority: "high",
         user_id: "123",
         created_at: new Date(),
         updated_at: new Date(),
@@ -123,6 +123,7 @@ describe("Todo API", () => {
           .put("/api/v1/todos/53456b71-b111-4278-ac34-9243620e2ac5")
           .send({
             title: "ナルガとティガを抱っこする",
+            priority: "high",
           });
         expect(response.status).toBe(200);
         expect(response.body.title).toBe("ナルガとティガを抱っこする");
