@@ -7,11 +7,13 @@ export const getTodos = async (req: Request, res: Response) => {
 };
 
 export const createTodo = async (req: Request, res: Response) => {
-  const title = req.body.title;
+  const id = uuidv4();
+  const { title, priority } = req.body;
   await prisma.todo.create({
     data: {
-      id: uuidv4(),
+      id,
       title,
+      priority,
       user_id: "123",
     },
   });
@@ -31,13 +33,14 @@ export const getTodo = async (req: Request, res: Response) => {
 
 export const updateTodo = async (req: Request, res: Response) => {
   const id = req.params.id;
-  const { title } = req.body;
+  const { title, priority } = req.body;
   await prisma.todo.update({
     where: {
       id,
     },
     data: {
       title,
+      priority,
       updated_at: new Date(),
     },
   });
