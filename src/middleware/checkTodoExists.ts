@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import prisma from "../lib/prisma/client";
 
-export const checkTodoExists = async (
+const checkTodoExists = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -27,3 +27,5 @@ export const checkTodoExists = async (
     await prisma.$disconnect();
   }
 };
+
+export default checkTodoExists;

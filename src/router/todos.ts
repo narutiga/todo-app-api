@@ -1,5 +1,5 @@
 import express from "express";
-import { checkTodoExists } from "../middleware/checkTodoExists";
+import checkTodoExists from "../middleware/checkTodoExists";
 import {
   createTodo,
   deleteTodo,
