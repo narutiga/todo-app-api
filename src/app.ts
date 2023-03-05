@@ -1,5 +1,6 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
+import logger from "./lib/winston/logger";
 
 const app = express();
 
@@ -11,6 +12,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use((req: Request, res: Response, next: NextFunction) => {
+  logger.info(`${req.method} ${req.originalUrl}`);
+  next();
+});
 app.use("/api/v1/todos", require("./router/todos"));
 
 export default app;
