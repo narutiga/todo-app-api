@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import logger from "../lib/winston/logger";
 import prisma from "../lib/prisma/client";
 
 export const checkTodoExists = async (
@@ -16,12 +17,13 @@ export const checkTodoExists = async (
     });
 
     if (!existingTodo) {
+      logger.error(`Todo with id ${id} not found`);
       return res.status(404).json({ error: "Todo not found" });
     }
     res.locals.todo = existingTodo;
     next();
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return res.status(500).json({ error: "Internal server error" });
   } finally {
     await prisma.$disconnect();

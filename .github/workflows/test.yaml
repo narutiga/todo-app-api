@@ -9,5 +9,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: yarn install
         run: yarn
-      - name: unit test
+      - name: run the tests
         run: yarn test
