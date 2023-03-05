@@ -12,5 +12,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api/v1/todos", require("./router/todos"));
+app.use("/api/v1/auth", require("./router/auth"));
 
 export default app;
