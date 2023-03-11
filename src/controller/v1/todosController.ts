@@ -14,7 +14,7 @@ export const createTodo = async (req: Request, res: Response) => {
       id,
       title,
       priority,
-      user_id: "123",
+      userId: "123",
     },
   });
   const todos = await prisma.todo.findMany();
@@ -41,7 +41,7 @@ export const updateTodo = async (req: Request, res: Response) => {
     data: {
       title,
       priority,
-      updated_at: new Date(),
+      updatedAt: new Date(),
     },
   });
   const todo = await prisma.todo.findUnique({

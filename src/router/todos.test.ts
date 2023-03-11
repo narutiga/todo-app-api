@@ -10,20 +10,20 @@ describe("test /api/v1/todos", () => {
         {
           id: "53456b71-b111-4278-ac34-9243620e2ac5",
           title: "ナルガとティガを抱っこする",
-          is_done: false,
+          isDone: false,
           priority: "high",
-          user_id: "123",
-          created_at: new Date(),
-          updated_at: new Date(),
+          userId: "123",
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           id: "53456b71-b111-4278-ac34-9243620e2ac6",
           title: "ナルガにごはんをあげる",
-          is_done: false,
+          isDone: false,
           priority: "high",
-          user_id: "123",
-          created_at: new Date(),
-          updated_at: new Date(),
+          userId: "123",
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ];
 
@@ -44,30 +44,30 @@ describe("test /api/v1/todos", () => {
       const dummyTodo = {
         id: "53456b71-b111-4278-ac34-9243620e2ac7",
         title: "ナルガとティガをなでる",
-        is_done: false,
+        isDone: false,
         priority: "high",
-        user_id: "123",
-        created_at: new Date(),
-        updated_at: new Date(),
+        userId: "123",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       };
       const dummyTodos = [
         {
           id: "53456b71-b111-4278-ac34-9243620e2ac5",
           title: "ナルガとティガを抱っこする",
-          is_done: false,
+          isDone: false,
           priority: "high",
-          user_id: "123",
-          created_at: new Date(),
-          updated_at: new Date(),
+          userId: "123",
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           id: "53456b71-b111-4278-ac34-9243620e2ac6",
           title: "ナルガにごはんをあげる",
-          is_done: false,
+          isDone: false,
           priority: "high",
-          user_id: "123",
-          created_at: new Date(),
-          updated_at: new Date(),
+          userId: "123",
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         dummyTodo,
       ];
@@ -98,11 +98,11 @@ describe("test /api/v1/todos/:id", () => {
     const dummyTodo = {
       id: "53456b71-b111-4278-ac34-9243620e2ac5",
       title: "ナルガとティガを抱っこする",
-      is_done: false,
+      isDone: false,
       priority: "high",
-      user_id: "123",
-      created_at: new Date(),
-      updated_at: new Date(),
+      userId: "123",
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
     prismaMock.todo.findUnique.mockResolvedValue(dummyTodo);
   });

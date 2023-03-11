@@ -20,17 +20,17 @@ model Message {
 model User {
   id         String  @id
   name       String
-  icon_image String
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  iconImage String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Todo {
   id          String  @id
   title       String
-  is_done     Boolean @default(false)
+  isDone     Boolean @default(false)
   priority    String
-  user_id     String
-  created_at  DateTime @default(now())
-  updated_at  DateTime @default(now())
+  userId     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
 }
