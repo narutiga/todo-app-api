@@ -1,6 +1,7 @@
 import express from "express";
 import { checkTodoExists } from "../middleware/checkTodoExists";
 import {
+  changeTodoDueDate,
   createTodo,
   deleteTodo,
   getTodo,
@@ -18,6 +19,7 @@ router
   .route("/:id")
   .get(getTodo)
   .put(validateTodoData, updateTodo)
+  .patch(changeTodoDueDate)
   .delete(deleteTodo);
 
 module.exports = router;
