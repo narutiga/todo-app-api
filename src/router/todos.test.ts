@@ -11,7 +11,7 @@ describe("test /api/v1/todos", () => {
           id: "53456b71-b111-4278-ac34-9243620e2ac5",
           title: "ナルガとティガを抱っこする",
           isDone: false,
-          priority: "high",
+          dueDate: "today",
           userId: "123",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -20,7 +20,7 @@ describe("test /api/v1/todos", () => {
           id: "53456b71-b111-4278-ac34-9243620e2ac6",
           title: "ナルガにごはんをあげる",
           isDone: false,
-          priority: "high",
+          dueDate: "today",
           userId: "123",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -45,7 +45,7 @@ describe("test /api/v1/todos", () => {
         id: "53456b71-b111-4278-ac34-9243620e2ac7",
         title: "ナルガとティガをなでる",
         isDone: false,
-        priority: "high",
+        dueDate: "today",
         userId: "123",
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -55,7 +55,7 @@ describe("test /api/v1/todos", () => {
           id: "53456b71-b111-4278-ac34-9243620e2ac5",
           title: "ナルガとティガを抱っこする",
           isDone: false,
-          priority: "high",
+          dueDate: "today",
           userId: "123",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -64,7 +64,7 @@ describe("test /api/v1/todos", () => {
           id: "53456b71-b111-4278-ac34-9243620e2ac6",
           title: "ナルガにごはんをあげる",
           isDone: false,
-          priority: "high",
+          dueDate: "today",
           userId: "123",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -79,7 +79,7 @@ describe("test /api/v1/todos", () => {
     test("should create a new todo", async () => {
       const response = await request(app)
         .post("/api/v1/todos")
-        .send({ priority: "high", title: "ナルガとティガをなでる" });
+        .send({ dueDate: "today", title: "ナルガとティガをなでる" });
 
       expect(response.status).toBe(200);
       expect(response.body[2].title).toBe("ナルガとティガをなでる");
@@ -99,7 +99,7 @@ describe("test /api/v1/todos/:id", () => {
       id: "53456b71-b111-4278-ac34-9243620e2ac5",
       title: "ナルガとティガを抱っこする",
       isDone: false,
-      priority: "high",
+      dueDate: "today",
       userId: "123",
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -146,7 +146,7 @@ describe("test /api/v1/todos/:id", () => {
           .put("/api/v1/todos/53456b71-b111-4278-ac34-9243620e2ac5")
           .send({
             title: "ナルガとティガを抱っこする",
-            priority: "high",
+            dueDate: "today",
           });
         expect(response.status).toBe(200);
         expect(response.body.title).toBe("ナルガとティガを抱っこする");
