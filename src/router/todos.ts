@@ -26,4 +26,4 @@ router
   .patch(changeTodoDueDate)
   .delete(deleteTodo);
 
-module.exports = router;
+export default router;

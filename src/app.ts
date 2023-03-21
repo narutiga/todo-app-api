@@ -2,6 +2,8 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import logger from "./lib/winston/logger";
 import authRouter, { passport } from "./router/auth";
+import todoRouter from "./router/todos";
+import userRouter from "./router/user";
 import Redis from "ioredis";
 import connectRedis from "connect-redis";
 import session from "express-session";
@@ -44,6 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api/v1/auth", authRouter);
 app.use(setUserData);
-app.use("/api/v1/todos", require("./router/todos"));
+app.use("/api/v1/todos", todoRouter);
+app.use("/api/v1/user", userRouter);
 
 export default app;
