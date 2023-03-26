@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import prisma from "../../lib/prisma/client";
-import { v4 as uuidv4 } from "uuid";
 export const getTodos = async (req: Request, res: Response) => {
   if (res.locals.user === undefined) {
     return res.json([]);
@@ -21,8 +20,7 @@ export const getTodos = async (req: Request, res: Response) => {
 };
 
 export const createTodo = async (req: Request, res: Response) => {
-  const id = uuidv4();
-  const { title, dueDate } = req.body;
+  const { id, title, dueDate } = req.body;
   const userId = res.locals.user.id;
   await prisma.todo.create({
     data: {
