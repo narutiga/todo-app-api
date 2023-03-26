@@ -21,6 +21,7 @@ describe("createTodo", () => {
   test("creates a todo and returns all todos", async () => {
     const req = {
       body: {
+        id: "12345",
         title: "Test todo",
         dueDate: "today",
       },
