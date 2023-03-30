@@ -19,9 +19,11 @@ const extractProfile = (profile: any) => {
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL!,
+      clientID: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      callbackURL:
+        process.env.GOOGLE_CALLBACK_URL ||
+        "http://localhost:8080/api/v1/auth/google/redirect",
     },
     (accessToken, refreshToken, profile, done) => {
       const user = extractProfile(profile);
@@ -56,7 +58,7 @@ router.route("/google/redirect").get(
     failureRedirect: "/google",
   }),
   (req, res) => {
-    res.redirect("http://localhost:3000");
+    res.redirect("https://todo-app-narutiga.vercel.app");
   }
 );
 
@@ -64,7 +66,7 @@ router.post("/google/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
   });
-  res.redirect("http://localhost:3000");
+  res.redirect("https://todo-app-narutiga.vercel.app");
 });
 
 export { passport };
