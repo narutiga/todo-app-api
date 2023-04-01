@@ -18,7 +18,7 @@ const corsOptions = {
 };
 
 const RedisStore = connectRedis(session);
-const url = (process.env.REDIS_URL as string) ?? "redis://localhost:6379";
+const url = process.env.REDIS_URL ?? "redis://localhost:6379";
 const client = new Redis(url);
 client.on("connect", () => {
   console.log("Redis client connected");
@@ -39,7 +39,7 @@ app.use(
     secret: process.env.SESSION_SECRET ?? "secret",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    // cookie: { secure: true },
   })
 );
 app.use(passport.initialize());
