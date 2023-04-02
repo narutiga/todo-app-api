@@ -40,7 +40,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      domain: "vercel.app",
+      domain: ".vercel.app",
       secure: true,
     },
   })
