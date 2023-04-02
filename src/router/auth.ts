@@ -43,7 +43,6 @@ passport.deserializeUser((user, done) => {
 });
 
 const router = express.Router();
-// const router = Router();
 
 router.route("/google").get(
   passport.authenticate("google", {
