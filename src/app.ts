@@ -40,7 +40,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      domain: "https://todo-app-narutiga.vercel.app",
+      domain: "todo-app-narutiga.vercel.app",
       secure: true,
     },
   })
