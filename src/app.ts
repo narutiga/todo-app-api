@@ -39,10 +39,11 @@ app.use(
     secret: process.env.SESSION_SECRET ?? "secret",
     resave: false,
     saveUninitialized: true,
-    // cookie: {
-    //   domain: ".vercel.app",
-    //   secure: true,
-    // },
+    proxy: true,
+    cookie: {
+      domain: "todo-app-narutiga.vercel.app",
+      secure: true,
+    },
   })
 );
 app.use(passport.initialize());
