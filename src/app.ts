@@ -39,10 +39,10 @@ app.use(
     secret: process.env.SESSION_SECRET ?? "secret",
     resave: false,
     saveUninitialized: true,
-    cookie: {
-      domain: ".vercel.app",
-      secure: true,
-    },
+    // cookie: {
+    //   domain: ".vercel.app",
+    //   secure: true,
+    // },
   })
 );
 app.use(passport.initialize());
