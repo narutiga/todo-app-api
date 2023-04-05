@@ -43,6 +43,7 @@ app.use(
     cookie: {
       // domain: "todo-app-narutiga.vercel.app",
       secure: true,
+      sameSite: "none",
     },
   })
 );
