@@ -12,7 +12,7 @@ import setUserData from "./middleware/setUserData";
 const app: Application = express();
 
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+  origin: process.env.CORS_ORIGIN ?? "http://localhost:3000",
   credentials: true,
   optionsSuccessStatus: 200,
 };
@@ -41,7 +41,7 @@ app.use(
     saveUninitialized: true,
     proxy: true,
     cookie: {
-      domain: "todo-app-narutiga.vercel.app",
+      // domain: "todo-app-narutiga.vercel.app",
       secure: true,
     },
   })
