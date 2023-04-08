@@ -19,7 +19,7 @@ const corsOptions = {
 
 const RedisStore = connectRedis(session);
 const url = process.env.REDIS_URL ?? "redis://localhost:6379";
-const client = new Redis(url);
+export const client = new Redis(url);
 client.on("connect", () => {
   console.log("Redis client connected");
 });
