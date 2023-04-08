@@ -57,7 +57,7 @@ router.route("/google/redirect").get(
     failureRedirect: "/google",
   }),
   (req, res) => {
-    res.redirect("https://todo-app-narutiga.vercel.app");
+    res.redirect(process.env.REDIRECT_URL || "http://localhost:3000");
   }
 );
 
@@ -65,7 +65,7 @@ router.post("/google/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
   });
-  res.redirect("https://todo-app-narutiga.vercel.app");
+  res.redirect(process.env.REDIRECT_URL || "http://localhost:3000");
 });
 
 export { passport };

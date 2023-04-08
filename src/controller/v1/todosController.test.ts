@@ -1,51 +1,30 @@
 import { Request, Response } from "express";
-import { prismaMock } from "../../lib/prisma/singleton";
-import { createTodo } from "./todosController";
+import supertest from "supertest";
+import express, { NextFunction } from "express";
+import { prismaMock } from "./../../lib/prisma/singleton";
+import { getTodos } from "./todosController";
+import { client } from "../../app";
 
-describe("createTodo", () => {
-  const todos = [
-    {
-      id: "1",
-      title: "Test todo",
-      dueDate: "2023-03-20",
-      userId: "123",
-      isDone: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ];
-  beforeEach(() => {
-    prismaMock.todo.create.mockResolvedValue(todos[0]);
-    prismaMock.todo.findMany.mockResolvedValue(todos);
+const app = express();
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.locals.user = undefined;
+  next();
+});
+app.get("/api/v1/todos", getTodos);
+
+describe("GET /api/v1/todos", () => {
+  test("should return an empty array if no user ID is provided", async () => {
+    prismaMock.todo.findMany.mockResolvedValue([]);
+
+    const response = await supertest(app).get("/api/v1/todos");
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual([]);
+    expect(prismaMock.todo.findMany).not.toHaveBeenCalled();
   });
-  test("creates a todo and returns all todos", async () => {
-    const req = {
-      body: {
-        id: "12345",
-        title: "Test todo",
-        dueDate: "today",
-      },
-    } as Request;
-    const res = {
-      json: jest.fn(),
-    } as unknown as Response;
+});
 
-    await createTodo(req, res);
-
-    // PrismaClientのcreateメソッドが正しい引数で呼ばれたか確認
-    expect(prismaMock.todo.create).toHaveBeenCalledWith({
-      data: {
-        id: expect.any(String), // UUIDがランダムなので、any(String)で型だけチェック
-        title: req.body.title,
-        dueDate: req.body.dueDate,
-        userId: "123",
-      },
-    });
-
-    // PrismaClientのfindManyメソッドが呼ばれたか確認
-    expect(prismaMock.todo.findMany).toHaveBeenCalled();
-
-    // res.jsonが正しい引数で呼ばれたか確認
-    expect(res.json).toHaveBeenCalledWith(todos);
-  });
+afterAll(async () => {
+  await prismaMock.$disconnect();
+  client.quit();
 });
